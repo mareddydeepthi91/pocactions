@@ -1,0 +1,20 @@
+name: Echo Workflow
+
+on: push
+
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      
+    - name: Read AWS Policy JSON File
+      id: read_file  
+      uses: juliangruber/read-file-action@v1
+      with:
+        path: ./policy.json
+
+    - name: Run a one-line script
+      run: |
