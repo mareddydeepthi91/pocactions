@@ -25,4 +25,4 @@ jobs:
 
     - name: Run a one-line script
       run: |
-        echo "${{fromJson(steps.read_file.output.content).version}}"
+        echo "${{steps.read_file.output.content}}"
