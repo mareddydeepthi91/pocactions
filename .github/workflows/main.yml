@@ -5,9 +5,6 @@ on: push
 jobs:
   echo:
     runs-on: ubuntu-latest
-    # outputs:
-    #      matrix: ${{ steps.read_file.outputs.matrix }}
-
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -18,17 +15,7 @@ jobs:
         echo 'content<<EOF' >> $GITHUB_ENV
         cat ./policy.json >> $GITHUB_ENV
         echo 'EOF' >> $GITHUB_ENV
-      
-        # echo "policy_json<<EOF"
-        # content=`cat ./policy.json`
-        # content="${content//'%'/'%25'}"
-        # content="${content//$'\n'/'%0A'}"
-        # content="${content//$'\r'/'%0D'}"
-        #echo "JSON File Content=${content}" >> "$GITHUB_OUTPUT"
-        
-        # echo "::set-output name=content::$content"
 
     - name: Run a one-line script
       run: |
-        # echo "${{ steps.read_file.outputs.content }}"
         echo "JSON File Content=$content"
