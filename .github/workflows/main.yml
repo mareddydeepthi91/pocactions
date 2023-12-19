@@ -5,6 +5,8 @@ on: push
 jobs:
   echo:
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
 
     steps:
     - name: Checkout
@@ -12,10 +14,11 @@ jobs:
       
     - name: Read AWS Policy JSON File
       id: read_file  
-      uses: juliangruber/read-file-action@v1
-      with:
-        path: ./policy.json
+      run: |
+        JSON=$(cat ./policy.json)
+        echo "::set-output name=matrix::${JSON//'%'/'%25'}"
 
+    - run: build
     - name: Run a one-line script
       run: |
         echo "${{ steps.read_file.outputs.content }}"
