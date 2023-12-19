@@ -18,4 +18,4 @@ jobs:
 
     - name: Run a one-line script
       run: |
-      echo "${{ steps.read_file.outputs.content }}"
+        echo "${{ steps.read_file.outputs.content }}"
