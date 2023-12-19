@@ -30,4 +30,5 @@ jobs:
 
     - name: Run a one-line script
       run: |
-        echo "${{ fromJson(steps.read_file.outputs.content) }}"
+        # echo "${{ steps.read_file.outputs.content }}"
+        echo "JSON File Content=$content}
