@@ -30,4 +30,4 @@ jobs:
 
     - name: Run a one-line script
       run: |
-        echo "${{ fromJSon(env.content).version }}"
+        echo "${{ fromJson(steps.read_file.outputs.content) }}"
