@@ -19,10 +19,10 @@ jobs:
         content="${content//'%'/'%25'}"
         content="${content//$'\n'/'%0A'}"
         content="${content//$'\r'/'%0D'}"
-        echo "JSON File Content=${content}" >> "$GITHUB_OUTPUT"
+        #echo "JSON File Content=${content}" >> "$GITHUB_OUTPUT"
         
-        #echo "::set-output name=content::$content"
+        echo "::set-output name=content::$content"
 
     - name: Run a one-line script
       run: |
-        echo "${{ fromJson(steps.read_file.outputs.Content).version }}"
+        echo "${{ fromJson(steps.read_file.outputs.content).version }}"
