@@ -18,7 +18,6 @@ jobs:
         JSON=$(cat ./policy.json)
         echo "::set-output name=matrix::${JSON//'%'/'%25'}"
 
-    - run: build
     - name: Run a one-line script
       run: |
         echo "${{ steps.read_file.outputs.content }}"
