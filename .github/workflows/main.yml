@@ -16,9 +16,9 @@ jobs:
       id: read_file  
       run: |
         content=$(<policy.json)
-        echo "JSON File Content: $content"
-        echo "::set-output name=content::$content"
+        echo "JSON File Content: $content" >> "$GITHUB_OUTPUT"
+        #echo "::set-output name=content::$content"
 
     - name: Run a one-line script
       run: |
-        echo "${{ steps.read_file.output.content }}"
+        echo "${{ steps.read_file.output.* }}"
